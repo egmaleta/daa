@@ -16,5 +16,4 @@ def identity(x):
 
 
 if __name__ == "__main__":
-    tester = FooTestGen(100)
-    test(identity, tester)
+    test(identity, FooTestGen(100))
