@@ -1,7 +1,7 @@
 from tester import TestCase, test
 
 
-class FooTester:
+class FooTestGen:
     def __init__(self, n: int):
         assert n > 0
         self._n = n
@@ -16,5 +16,5 @@ def identity(x):
 
 
 if __name__ == "__main__":
-    tester = FooTester(100)
+    tester = FooTestGen(100)
     test(identity, tester)
