@@ -1,4 +1,4 @@
-from tester import TestCase, test
+from shared.testing import TestCase, test
 
 
 class FooTestGen:
