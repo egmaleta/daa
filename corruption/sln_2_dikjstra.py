@@ -41,7 +41,7 @@ def dijkstra(grafo, inicio):
 
     return distancias, caminos
 
-def reconstruir_camino(self, inicio, destino, caminos):
+def reconstruir_camino(inicio, destino, caminos):
     camino = []
     actual = destino
     while actual is not None:
@@ -51,7 +51,43 @@ def reconstruir_camino(self, inicio, destino, caminos):
     return camino if camino[0] == inicio else None
 
 
+def solver(grafo):
+    distras = {}
+    long_de_caminos = {vertice: {} for vertice in grafo.grafo}
+    for v in grafo.grafo.keys():
+        caminos = dijkstra(grafo,v)[1]
+
+        for w in grafo.grafo.keys():
+            if v != w:
+                camino_de_v_a_w = reconstruir_camino(v,w,caminos)
+                if camino_de_v_a_w != None:
+                    long_de_caminos[v][w] = len(camino_de_v_a_w)  -1              
+
+
+    return long_de_caminos    
 
 
 
 
+
+
+
+# testing
+
+grafo = Grafo()
+grafo.agregar_arista('A', 'B', 1)
+grafo.agregar_arista('A', 'C', 4)
+grafo.agregar_arista('B', 'C', 2)
+grafo.agregar_arista('B', 'D', 5)
+grafo.agregar_arista('C', 'D', 1)
+
+# distancias, caminos = dijkstra(grafo,'B')
+# print("Distancias:", distancias)
+# print("Caminos:", caminos)
+
+# camino = reconstruir_camino('B', 'C', caminos)
+# print("Camino de A a D:", camino)
+
+
+result = solver(grafo)
+print(result)
