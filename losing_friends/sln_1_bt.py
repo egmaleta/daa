@@ -16,10 +16,9 @@ def bt(g: Graph, v_start: int, w_start: int, friendship_count: int):
         raise _SlnFound()
     
     for v, w, data in g.traverse(v_start, w_start):
-        if data is not None:
-            g.remove_edge(v, w)
-            bt(g, v, w + 1, friendship_count - 1)
-            g.add_edge(v, w, data)
+        g.remove_edge(v, w)
+        bt(g, v, w + 1, friendship_count - 1)
+        g.add_edge(v, w, data)
 
 
 def sln(k: int, friendships: list[tuple[int, int]]):

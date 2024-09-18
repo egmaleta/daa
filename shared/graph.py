@@ -15,7 +15,8 @@ class Graph:
                 w_start = v + 1
             
             for w, data in enumerate(mask[w_start:], start=w_start):
-                yield v, w, data
+                if data is not None:
+                    yield v, w, data
     
     def _is_valid_vertex(self, v: int):
         return 0 <= v < len(self._mask)
@@ -36,9 +37,8 @@ class Graph:
     
     def edge_count(self):
         count = 0
-        for _, _, data in self.traverse():
-            if data is not None:
-                count += 1
+        for _, _, _ in self.traverse():
+            count += 1
         return count
     
     def vecinity(self, v: int):
@@ -66,7 +66,9 @@ class DirectedGraph:
             for w, data in enumerate(mask[w_start:], start=w_start):
                 if w == v:
                     continue
-                yield v, w, data
+
+                if data is not None:
+                    yield v, w, data
     
     def _is_valid_vertex(self, v: int):
         return 0 <= v < len(self._mask)
