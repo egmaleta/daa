@@ -35,6 +35,7 @@ def sln(n: int, streets: list[tuple[int, int, int]]):
                 i2j = dists[i][j]
                 if i2j is None or i2j > i2k2j:
                     dists[i][j] = i2k2j
+                    prevs[i][j] = prevs[k][j]
     
     def path_length(v: int, w: int):
         if prevs[v][w] is None:
@@ -46,11 +47,14 @@ def sln(n: int, streets: list[tuple[int, int, int]]):
             assert w is not None
             p.append(w)
         
-        return len(p)
+        return len(p) - 1
     
     street_lengths = []
     for v, ws in enumerate(dists):
         for w, dist in enumerate(ws):
+            if w == v:
+                continue
+
             if dist is not None:
                 l = path_length(v, w)
                 assert l is not None

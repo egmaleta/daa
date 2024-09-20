@@ -52,7 +52,6 @@ def reconstruir_camino(inicio, destino, caminos):
 
 
 def solver(grafo):
-    distras = {}
     long_de_caminos = {vertice: {} for vertice in grafo.grafo}
     for v in grafo.grafo.keys():
         caminos = dijkstra(grafo,v)[1]
@@ -74,6 +73,8 @@ grafo.agregar_arista('A', 'C', 4)
 grafo.agregar_arista('B', 'C', 2)
 grafo.agregar_arista('B', 'D', 5)
 grafo.agregar_arista('C', 'D', 1)
+grafo.agregar_arista("D", "C", 10)
+grafo.agregar_arista("D", "A", 3)
 
 # distancias, caminos = dijkstra(grafo,'B')
 # print("Distancias:", distancias)
