@@ -10,7 +10,7 @@ Sea `G = {V,E}` un grafo, para todo par de vértices `s` y `t` del grafo, determ
 
 
 ## 2. Banco
-
+En este problema no utilizaremos ninguna estructura de datos específica, trabajaremos sobre las entidades que se mencionan en la orientación.
 
 ## 3. Rompiendo amistades
 

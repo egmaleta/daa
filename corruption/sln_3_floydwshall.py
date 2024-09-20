@@ -17,9 +17,8 @@ def sln(n: int, streets: list[tuple[int, int, int]]):
         for y in vertices
     ]
     for v, w, weight in g.traverse():
-        if weight is not None:
-            dists[v][w] = weight
-            prevs[v][w] = v
+        dists[v][w] = weight
+        prevs[v][w] = v
     
     for k in vertices:
         for i in vertices:

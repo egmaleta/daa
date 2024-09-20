@@ -4,7 +4,7 @@ from typing import Any, NamedTuple, Protocol
 
 class TestCase[T](NamedTuple):
     args: list[Any]
-    expected_result: T
+    cond: Callable[[Any], bool]
 
 
 class ITestGen[T](Protocol):
@@ -13,6 +13,6 @@ class ITestGen[T](Protocol):
 
 
 def test[T](impl: Callable[..., T], test_gen: ITestGen[T] | Generator[TestCase[T]]):
-    for n, (args, expected) in enumerate(test_gen, start=1):
+    for n, (args, cond) in enumerate(test_gen, start=1):
         result = impl(*args)
-        assert result == expected, f"Test #{n} with args '{args}' failed: got '{result}', expected '{expected}'."
+        assert cond(result), f"Test #{n} with args '{args}' and result '{result}' failed."
