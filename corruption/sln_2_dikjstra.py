@@ -1,5 +1,6 @@
 import heapq
 
+
 class Grafo:
     def __init__(self) -> None:
         self.grafo = {}
@@ -14,8 +15,7 @@ class Grafo:
         if destino not in self.grafo:
             self.agragar_vertice(destino)
 
-        self.grafo[origen][destino] = peso
-        
+        self.grafo[origen][destino] = peso    
 
 
 def dijkstra(grafo, inicio):
@@ -61,15 +61,9 @@ def solver(grafo):
             if v != w:
                 camino_de_v_a_w = reconstruir_camino(v,w,caminos)
                 if camino_de_v_a_w != None:
-                    long_de_caminos[v][w] = len(camino_de_v_a_w)  -1              
-
+                    long_de_caminos[v][w] = len(camino_de_v_a_w)  -1
 
     return long_de_caminos    
-
-
-
-
-
 
 
 # testing
@@ -87,7 +81,6 @@ grafo.agregar_arista('C', 'D', 1)
 
 # camino = reconstruir_camino('B', 'C', caminos)
 # print("Camino de A a D:", camino)
-
 
 result = solver(grafo)
 print(result)
