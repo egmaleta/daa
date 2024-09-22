@@ -92,6 +92,7 @@ class _TestGen:
             lengths = lengths
             yield TestCase(
                 [k, streets],
+                lengths,
                 lambda res: res == lengths
             )
 
