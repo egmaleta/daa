@@ -1,21 +1,43 @@
-from sln_2_dikjstra import Grafo
+from shared import FLOAT_INF
 
-def camino_minimo(Graph, start, end):
+from .grafo import Grafo
+
+
+def min_cost_path_len(Graph, start, end):
     visited = set()
-    min_cost = [float('inf')]
+    min_cost = [FLOAT_INF]
+    path_len = [FLOAT_INF]
 
-    def backtrack(v, current_cost):
+    def backtrack(v, current_cost, pl):
         if v == end:
-            min_cost[0] = min(min_cost[0], current_cost)
+            if current_cost < min_cost[0]:
+                min_cost[0] = current_cost
+                path_len[0] = pl
             return 
         
         visited.add(v)
 
-        for neighbor,cost in Graph.grafo[v].items():
+        for neighbor, cost in Graph.grafo[v].items():
             if neighbor not in visited:
-                backtrack(neighbor, current_cost + cost)
+                backtrack(neighbor, current_cost + cost, pl + 1)
 
         visited.remove(v)
 
-    backtrack(start, 0)
-    return min_cost[0] if min_cost[0] != float('inf') else None           
+    backtrack(start, 0, 0)
+    return path_len[0]
+
+
+def sln(graph: Grafo):
+    vertices = sorted(graph.grafo.keys())
+
+    lenghts = []
+    for v in vertices:
+        for w in vertices:
+            if v == w:
+                continue
+
+            l = min_cost_path_len(graph, v, w)
+            if l != FLOAT_INF:
+                lenghts.append((v, w, l))
+    
+    return lenghts
