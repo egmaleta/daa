@@ -55,7 +55,7 @@ def solver(grafo):
     distras = {}
     long_de_caminos = {vertice: {} for vertice in grafo.grafo}
     for v in grafo.grafo.keys():
-        caminos = dijkstra(grafo,v)[1]
+        distancias,caminos = dijkstra(grafo,v)
 
         for w in grafo.grafo.keys():
             if v != w:
