@@ -54,7 +54,27 @@ Para cada caso de prueba, no hay entrada previa a la primera consulta, pero pued
 Salida:
 Para cada caso de prueba, cuando sepas el valor exacto de M, imprime una única línea con el formato "! M". Después de eso, tu programa debe proceder al siguiente caso de prueba o terminar, si es el último.
 
-En este problema no utilizaremos ninguna estructura de datos específica, trabajaremos sobre las entidades que se mencionan en la orientación.
+
+### Modelación del problema
+
+Dado que se conoce que $1 \leq M \leq 1014$ entonces podemos reducir el problema a buscar $M$ en el conjunto $P$ (ordenado) donde $P \sub Z \wedge P = [1:1014]$. Sea $is\_ gt\_ M(k)$ una función que determina si $k > M$ entonces se puede realizar una busqueda binaria en el conjunto $P$.
+Para realizar la búsqueda binaria se debe tener en cuenta que preguntar por un $k$ específico no puede ser siempre en la mitad. Es necesario tener en cuenta que lo mejor que se puede preguntar siempre para asegurar descartar la mayor cantidad de soluciones posibles es la mitad del conjunto pero dada la particularidad de que cada vez que la función $is\_ gt\_ M(k)$ responda $True$ la cantidad de dinero disponible disminuye en $k$ y nuestra cantidad de dinero nunca debe  ser menor que $0$.
+Teniendo en cuenta que $a$ es el último acierto conocido, en términos del problema carece de total sentido preguntar por un número $k$ donde $k<a$ y sólo preguntamos por $a$ si necesitamos recuperar dinero. 
+
+### Solución
+Por todo lo anteriormente mencionado el criterio de búsqueda se resume a:
+- Sea $a$ último acierto conocido.
+- Sea $b$ último fallo conocido.
+- Sea $m$ cantidad de dinero disponible.
+- Sea $k$ número que vamos a comparar con $M$.
+
+Entonces $k = min(m, (a+b)/2)$. Es decir si podemos preguntaremos por la mitad del conjunto de búsqueda restante, en otro caso preguntaremos por la cantidad de dinero que tenemos disponible. Como resultado si $a == b$ entonces $a == M$.
+
+Esta solución tiene una complejidad bastante cercana a $log^{1014}_2$ de la busqueda binaria usual con una alteración en que es necesario hacer 9 preguntas adicionales para poder pregunta exactamente por la mitad del conjunto $P$ y cada fallo a lo sumo genera 2 preguntas adicionales, con un máximo de 10 fallos posibles por tanto nunca puede exceder las 105 preguntar para hallar la solucion del problema.
+
+
+
+
 
 ## 3. Rompiendo amistades
 
