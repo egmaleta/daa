@@ -1,4 +1,7 @@
 from shared.graph import DirectedGraph
+from shared.testing import test
+
+from .test_gen import TEST_GEN
 
 
 def sln(n: int, streets: list[tuple[int, int, int]]):
@@ -35,6 +38,7 @@ def sln(n: int, streets: list[tuple[int, int, int]]):
                 i2j = dists[i][j]
                 if i2j is None or i2j > i2k2j:
                     dists[i][j] = i2k2j
+                    prevs[i][j] = prevs[k][j]
     
     def path_length(v: int, w: int):
         if prevs[v][w] is None:
@@ -46,14 +50,20 @@ def sln(n: int, streets: list[tuple[int, int, int]]):
             assert w is not None
             p.append(w)
         
-        return len(p)
+        return len(p) - 1
     
-    street_lengths = []
+    street_lengths = set()
     for v, ws in enumerate(dists):
         for w, dist in enumerate(ws):
+            if w == v:
+                continue
+
             if dist is not None:
                 l = path_length(v, w)
                 assert l is not None
-                street_lengths.append((v, w, l))
+                street_lengths.add((v, w, l))
     
     return street_lengths
+
+
+test(sln, TEST_GEN)

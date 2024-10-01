@@ -38,6 +38,7 @@ class _TestGen:
         for i in range(self._M):
             yield TestCase(
                 [0, self._M, lambda x: x > i],
+                i,
                 lambda res: res[0] == i and res[1] <= self._max_fuel
             )
 

@@ -1,21 +1,6 @@
 import heapq
 
-class Grafo:
-    def __init__(self) -> None:
-        self.grafo = {}
-
-    def agragar_vertice(self, vertice):
-        if vertice not in self.grafo:
-            self.grafo[vertice] = {}
-
-    def agregar_arista(self, origen, destino, peso):
-        if origen not in self.grafo:
-            self.agragar_vertice(origen)
-        if destino not in self.grafo:
-            self.agragar_vertice(destino)
-
-        self.grafo[origen][destino] = peso
-        
+from .grafo import Grafo
 
 
 def dijkstra(grafo, inicio):
@@ -52,7 +37,6 @@ def reconstruir_camino(inicio, destino, caminos):
 
 
 def solver(grafo):
-    distras = {}
     long_de_caminos = {vertice: {} for vertice in grafo.grafo}
     for v in grafo.grafo.keys():
         distancias,caminos = dijkstra(grafo,v)
@@ -61,15 +45,9 @@ def solver(grafo):
             if v != w:
                 camino_de_v_a_w = reconstruir_camino(v,w,caminos)
                 if camino_de_v_a_w != None:
-                    long_de_caminos[v][w] = len(camino_de_v_a_w)  -1              
-
+                    long_de_caminos[v][w] = len(camino_de_v_a_w)  -1
 
     return long_de_caminos    
-
-
-
-
-
 
 
 # testing
@@ -80,6 +58,8 @@ grafo.agregar_arista('A', 'C', 4)
 grafo.agregar_arista('B', 'C', 2)
 grafo.agregar_arista('B', 'D', 5)
 grafo.agregar_arista('C', 'D', 1)
+grafo.agregar_arista("D", "C", 10)
+grafo.agregar_arista("D", "A", 3)
 
 # distancias, caminos = dijkstra(grafo,'B')
 # print("Distancias:", distancias)
@@ -87,7 +67,6 @@ grafo.agregar_arista('C', 'D', 1)
 
 # camino = reconstruir_camino('B', 'C', caminos)
 # print("Camino de A a D:", camino)
-
 
 result = solver(grafo)
 print(result)
