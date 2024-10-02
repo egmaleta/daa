@@ -272,24 +272,98 @@ Then $2\log(-1)=0$, from which the proof.
 
 \section{Rompiendo Amistades}
 
-Reference to Figure~\vref{fig:gallery}. % The \vref command specifies the location of the reference
+Por algún motivo, a José no le gustaba la paz y le irritaba que sus compañeros de aula se llevaran tan bien. Él quería ver
+el mundo arder. Un día un demonio se le acercó y le propuso un trato: "A cambio de un cachito de tu alma, te voy a dar el poder para
+romper relaciones de amistad de tus compañeros, con la única condición de que no puedes romperlas todas". Sin pensarlo mucho (Qué más
+da un pequeño trocito de alma), José aceptó y se puso a trabajar. Él conocía, dados sus k compañeros de aula, quiénes eran mutuamente
+amigos.\\
 
-\begin{figure}[tb]
-\centering 
-\includegraphics[width=0.5\columnwidth]{GalleriaStampe} 
-\caption[An example of a floating figure]{An example of a floating figure (a reproduction from the \emph{Gallery of prints}, M.~Escher,\index{Escher, M.~C.} from \url{http://www.mcescher.com/}).} % The text in the square bracket is the caption for the list of figures while the text in the curly brackets is the figure caption
-\label{fig:gallery} 
-\end{figure}
+Como no podía eliminar todas las relaciones de amistad, pensó en qué era lo siguiente que podía hacer más daño. Si una persona quedaba con
+uno o dos amigos, podría hacer proyectos en parejas o tríos (casi todos los de la carrera son así), pero si tenía exactamente tres amigos,
+cuando llegara un proyecto de tres personas, uno de sus amigos debería quedar afuera y se formaría el caos. \\
 
-\lipsum[10] % Dummy text
+Ayude a José a saber si puede sembrar la discordia en su aula eliminando relaciones de amistad entre sus compañeros de forma que todos queden, o bien sin amigos, o con exactamente tres amigos.
+
+
+
+% Reference to Figure~\vref{fig:gallery}. % The \vref command specifies the location of the reference
+
+% \begin{figure}[tb]
+% \centering 
+% \includegraphics[width=0.5\columnwidth]{GalleriaStampe} 
+% \caption[An example of a floating figure]{An example of a floating figure (a reproduction from the \emph{Gallery of prints}, M.~Escher,\index{Escher, M.~C.} from \url{http://www.mcescher.com/}).} % The text in the square bracket is the caption for the list of figures while the text in the curly brackets is the figure caption
+% \label{fig:gallery} 
+% \end{figure}
+
+% \lipsum[10] % Dummy text
 
 %------------------------------------------------
 
-\subsection{Subsection}
+\subsection{Modelación del problema}
 
-\lipsum[11] % Dummy text
+Representaremos los k compañeros de José como los vértices de un grafo no dirigido G = {V,E} de tamaño k, donde las relaciones de amistad entre ellos están representadas
+por las aristas entre los vértices del grafo. Entonces analizaremos el problema de la siguiente forma :\\
 
-\subsubsection{Subsubsection}
+Es posible eliminar aristas del grafo G (sin eliminarlas todas) de manera tal que todos los vértices queden, o bien aislados, o con exactamente 3 vecinos. \\
+
+También podemos verlo de la siguiente manera: \\
+
+Dado un grafo G determinar si existe un subgrago G' de G tal que G' es regular de grado 3.
+
+
+\subsubsection{Np-Completitud}
+
+Para demostrar que un problema es $NP-Completo$ hay que demostrar que:\\
+
+1. El problema está en NP.
+
+2. Se puede reducir un problema conocido como $NP-Completo$ a este problema en tiempo polinómico.
+
+\textbf{Paso1: Probar que el problema de encontrar un subgrafo regular de grado 3 (SR3) está NP }\\
+
+
+Dado un grafo G y un conjunto de aristas que supuestamente forman un subgrafo regular de grado 3, podemos verificar en 
+tiempo polinomial si este subgrafo es regular de grafo 3. Para ello, recorremos todas las aristas del subgrafo y contamos el grado de
+cada vértice. Si todos los vértices tienen grado 3, entonces el subgrafo es regular de grado 3. Este procedimiento tiene un costo de 
+$O(|V|+|E|)$, siendo $|V|$ la cantidad de vértices y $|E|$ la cantidad de aristas.
+
+
+\textbf{Paso2: Demostrar que SR3 es NP-Completo}\\
+
+Para demostrar que el problema CSP es NP-completo, se necesita realizar una reducción desde un problema conocido como NP-completo. 
+En este caso, se utilizará el problema de 3-coloración.
+
+
+\textbf{ Problema de 3-coloración} \\
+
+
+Dado un grafo no dirigido $G = (V,E)$ determinar si existe una partición del conjunto de vértices $V$,
+def la forma ${V1,V2,V3}$ tal que no existen aristas entre los vertices que pertenecen a la misma partición $Vi$.\\
+
+
+Definiciones:
+
+- $G$ : Grafo de entrada del problema de 3-coloración.
+
+- $V(G)$ : Conjunto de vértices del grafo $G$.
+
+-$E(G)$ : Conjunto de aristas del grafo $G$. 
+
+-$d(v_i)$ : Grado del vértice $i$.
+
+-$K_n'$ :Grafo completo de n vértices al que se le quita una arista (este grafo tiene todos los vértices con grado n-1, excepto dos vértices que tienen grado n-2).
+
+-3-partición : Dividir el conjunto de vértices en 3 conjuntos disjuntos.\\
+
+
+
+\textbf{Paso3: Transformación de la entrada  }\\
+
+
+
+
+\subsubsection{Solución}
+
 
 \lipsum[12] % Dummy text
 
