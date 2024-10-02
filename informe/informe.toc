@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}{Corrupción}}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}{Modelacion del problema}}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}{Solución 1: Utilizando el algoritmo de Dijkstra}}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}{Análisis de Correctitud}}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}{Análisis de Complejidad Temporal}}{3}{subsection.1.4}%
+\contentsline {section}{\numberline {2}{Banco}}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}{Paragraphs}}{4}{subsection.2.1}%
+\contentsline {paragraph}{{Paragraph Description}}{4}{paragraph*.1}%
+\contentsline {paragraph}{{Different Paragraph Description}}{4}{paragraph*.2}%
+\contentsline {subsection}{\numberline {2.2}{Math}}{4}{subsection.2.2}%
+\contentsline {section}{\numberline {3}{Rompiendo Amistades}}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}{Subsection}}{6}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}{Subsubsection}}{6}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}{Table}}{6}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}{Figure Composed of Subfigures}}{7}{subsection.3.2}%
