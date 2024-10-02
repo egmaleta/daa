@@ -61,18 +61,55 @@ Dado que se conoce que $1 \leq M \leq 1014$ entonces podemos reducir el problema
 Para realizar la búsqueda binaria se debe tener en cuenta que preguntar por un $k$ específico no puede ser siempre en la mitad. Es necesario tener en cuenta que lo mejor que se puede preguntar siempre para asegurar descartar la mayor cantidad de soluciones posibles es la mitad del conjunto pero dada la particularidad de que cada vez que la función $is\_ gt\_ M(k)$ responda $True$ la cantidad de dinero disponible disminuye en $k$ y nuestra cantidad de dinero nunca debe  ser menor que $0$.
 Teniendo en cuenta que $a$ es el último acierto conocido, en términos del problema carece de total sentido preguntar por un número $k$ donde $k<a$ y sólo preguntamos por $a$ si necesitamos recuperar dinero. 
 
+
 ### Solución
-Por todo lo anteriormente mencionado el criterio de búsqueda se resume a:
+
+1.Inicialización 
+
+Comenzamos con los siguientes valores:
+- Saldo inicial : 1
+- Límite inferior: 0.
+
+2. Proceso de Búsqueda : 
 - Sea $a$ último acierto conocido.
 - Sea $b$ último fallo conocido.
 - Sea $m$ cantidad de dinero disponible.
-- Sea $k$ número que vamos a comparar con $M$.
+- Sea $k$ número que vamos a comparar 
+con $M$.
 
-Entonces $k = min(m, (a+b)/2)$. Es decir si podemos preguntaremos por la mitad del conjunto de búsqueda restante, en otro caso preguntaremos por la cantidad de dinero que tenemos disponible. Como resultado si $a == b$ entonces $a == M$.
+Entonces $k = min(m, (a+b)/2)$. Es 
+decir si podemos preguntaremos por la 
+mitad del conjunto de búsqueda 
+restante, en otro caso preguntaremos 
+por la cantidad de dinero que tenemos 
+disponible. Como resultado si $a == b$ 
+entonces $a == M$.
 
-Esta solución tiene una complejidad bastante cercana a $log^{1014}_2$ de la busqueda binaria usual con una alteración en que es necesario hacer 9 preguntas adicionales para poder pregunta exactamente por la mitad del conjunto $P$ y cada fallo a lo sumo genera 2 preguntas adicionales, con un máximo de 10 fallos posibles por tanto nunca puede exceder las 105 preguntar para hallar la solucion del problema.
+3. Correctitud : 
+
+La estrategia que estamos utilizando es una búsqueda binaria adaptada para encontrar el límite M.
+
+3.1 Invariantes:
+Durante cada iteración del ciclo, mantenemos dos invariantes:
+- El valor de $low$ es siempre menor o igual que M
+- El valor de $high$ es 
+siempre mayor o igual que M.
+- Si la operación es exitosa( $X \leq M$), entonces esto significa que hemos encontrado un valor que no excede a M, por lo que podemos actualizar el límite inferior: $low = X+1$
+- Si la operación es detectada ($X > M$): esto significa que $M < X$, por lo que modificamos el límite superior: $high = X -1$
+
+3.2 Convergencia
+
+3.3 Costo total
 
 
+
+`sdsds`
+ 
+
+
+<!-- Esta solución tiene una complejidad bastante cercana a $log^{1014}_2$ de la busqueda binaria usual con una alteración en que es necesario hacer 9 preguntas adicionales para poder pregunta exactamente por la mitad del conjunto $P$ y cada fallo a lo sumo genera 2 preguntas adicionales, con un máximo de 10 fallos posibles por tanto nunca puede exceder las 105 preguntar para hallar la solucion del problema.
+
+ -->
 
 
 

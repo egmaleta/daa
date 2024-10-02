@@ -1,4 +1,4 @@
-import bank.sln_2_greedy
+import bank.sln_1_BS
 
 
 if __name__ == "__main__":
