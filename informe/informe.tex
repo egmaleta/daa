@@ -219,31 +219,105 @@ A statement requiring citation \cite{Figueredo:2009dg}.
 
 \section{Banco}
 
-Eduardo es el gerente principal de un gran banco. Tiene acceso ilimitado al sistema de bases de datos del banco y, con unos pocos clics, puede mover cualquier cantidad de dinero de las reservas del banco a su propia cuenta privada. Sin embargo, el banco utiliza un sofisticado sistema de detección de fraude impulsado por IA, lo que hace que robar sea más difícil.
+Eduardo es el gerente principal de un gran banco. Tiene acceso ilimitado al sistema de bases de datos del banco y, con unos pocos clics, puede mover cualquier cantidad de dinero de las reservas del banco a su propia cuenta privada. Sin embargo, el banco utiliza un sofisticado sistema de detección de fraude impulsado por IA, lo que hace que robar sea más difícil. \\
 
-Eduardo sabe que el sistema antifraude detecta cualquier operación que supere un límite fijo de M euros, y estas operaciones son verificadas manualmente por un número de empleados. Por lo tanto, cualquier operación fraudulenta que exceda este límite es detectada, mientras que cualquier operación menor pasa desapercibida.
+Eduardo sabe que el sistema antifraude detecta cualquier operación que supere un límite fijo de M euros, y estas operaciones son verificadas manualmente por un número de empleados. Por lo tanto, cualquier operación fraudulenta que exceda este límite es detectada, mientras que cualquier operación menor pasa desapercibida.\\
 
-Eduardo no conoce el límite M y quiere descubrirlo. En una operación, puede elegir un número entero X y tratar de mover X euros de las reservas del banco a su propia cuenta. Luego, ocurre lo siguiente.
+Eduardo no conoce el límite M y quiere descubrirlo. En una operación, puede elegir un número entero X y tratar de mover X euros de las reservas del banco a su propia cuenta. Luego, ocurre lo siguiente.\\
 
 Si X≤M, la operación pasa desapercibida y el saldo de la cuenta de Eduardo aumenta en X euros.  
 De lo contrario, si X>M, se detecta el fraude y se cancela la operación. Además, Eduardo debe pagar X euros de su propia cuenta como multa. Si tiene menos de X euros en la cuenta, es despedido y llevado a la policía.  
-Inicialmente, Eduardo tiene 1 euro en su cuenta. Ayúdalo a encontrar el valor exacto de M en no más de 105 operaciones sin que sea despedido.
+Inicialmente, Eduardo tiene 1 euro en su cuenta. Ayúdalo a encontrar el valor exacto de M en no más de 105 operaciones sin que sea despedido.\\
 
 Entrada:
-Cada prueba contiene múltiples casos de prueba. La primera línea contiene el número de casos de prueba t (1≤t≤1000).
+Cada prueba contiene múltiples casos de prueba. La primera línea contiene el número de casos de prueba t (1≤t≤1000).\\
 
-Para cada caso de prueba, no hay entrada previa a la primera consulta, pero puedes estar seguro de que M es un número entero y 0≤M≤1014.
+Para cada caso de prueba, no hay entrada previa a la primera consulta, pero puedes estar seguro de que M es un número entero y 0≤M≤1014.\\
 
 Salida:
-Para cada caso de prueba, cuando sepas el valor exacto de M, imprime una única línea con el formato "! M". Después de eso, tu programa debe proceder al siguiente caso de prueba o terminar, si es el último.
+Para cada caso de prueba, cuando sepas el valor exacto de M, imprime una única línea con el formato "! M". Después de eso, tu programa debe proceder al siguiente caso de prueba o terminar, si es el último.\\
 
 
 \subsection{Modelación del problema}
 
 Dado que se conoce que $1 \leq M \leq 1014$ entonces podemos reducir el problema a buscar $M$ en el conjunto $P$ (ordenado) donde $P \sub Z \wedge P = [1:1014]$. Sea $is\_ gt\_ M(k)$ una función que determina si $k > M$ entonces se puede realizar una busqueda binaria en el conjunto $P$.
-Para realizar la búsqueda binaria se debe tener en cuenta que preguntar por un $k$ específico no puede ser siempre en la mitad. Es necesario tener en cuenta que lo mejor que se puede preguntar siempre para asegurar descartar la mayor cantidad de soluciones posibles es la mitad del conjunto pero dada la particularidad de que cada vez que la función $is\_ gt\_ M(k)$ responda $True$ la cantidad de dinero disponible disminuye en $k$ y nuestra cantidad de dinero nunca debe  ser menor que $0$.
+Para realizar la búsqueda binaria se debe tener en cuenta que preguntar por un $k$ específico no puede ser siempre en la mitad. Es necesario tener en cuenta que lo mejor que se puede preguntar siempre para asegurar descartar la mayor cantidad de soluciones posibles es la mitad del conjunto,
+pero dada la particularidad de que cada vez que la función $is\_ gt\_ M(k)$ responda $True$ la cantidad de dinero disponible disminuye en $k$ y nuestra cantidad de dinero nunca debe  ser menor que $0$.
 Teniendo en cuenta que $a$ es el último acierto conocido, en términos del problema carece de total sentido preguntar por un número $k$ donde $k<a$ y sólo preguntamos por $a$ si necesitamos recuperar dinero. 
 
+\subsection{Solución: Búsqueda Binaria}
+El objetivo principal del algoritmo es determinar el valor de M, que se encuentra entre un límite inferior $(lb)$ y un límite superior $(ub)$. 
+
+Parámetros :\\
+
+-lb : Límite inferior del rango de búsqueda.
+
+
+-ub : Límite superior del rango de búsqueda.
+
+
+- is_gt_M : Función que toma una suposicion y devuelve True si la esta es mayor que M y False en caso contrario\\
+
+Variables internas: \\
+
+-money : representa la cantidad de dinero actual.
+
+-fuel: contador de iteraciones realizadas dureante la búsqueda. \\
+
+\textbf{1.Inicialización}
+ 
+Comenzamos con los siguientes valores:
+
+- Saldo inicial : 1
+
+
+- Límite inferior: 0.
+
+\textbf{2. Proceso de Búsqueda :} 
+
+- Sea $a$ último acierto conocido.
+
+- Sea $b$ último fallo conocido.
+
+- Sea $m$ cantidad de dinero disponible.
+
+- Sea $k$ número que vamos a comparar 
+con $M$.
+
+
+Entonces $k = min(m, (a+b)/2)$. Es 
+decir si podemos preguntaremos por la 
+mitad del conjunto de búsqueda 
+restante, en otro caso preguntaremos 
+por la cantidad de dinero que tenemos 
+disponible. Como resultado si $a == b$ 
+entonces $a == M$.
+
+
+\textbf{3. Correctitud :} 
+
+La estrategia que estamos utilizando es una búsqueda binaria adaptada para encontrar el límite M.\\
+
+
+3.1 Invariantes:\\
+
+Durante cada iteración del ciclo, mantenemos dos invariantes:\\
+
+
+- El valor de $low$ es siempre menor o igual que M
+
+
+- El valor de $high$ es siempre mayor o igual que M.
+
+
+- Si la operación es exitosa( $X \leq M$), entonces esto significa que hemos encontrado un valor que no excede a M, por lo que podemos actualizar el límite inferior: $low = X+1$
+
+
+- Si la operación es detectada ($X > M$): esto significa que $M < X$, por lo que modificamos el límite superior: $high = X -1$
+
+\textbf{3.1 Convergencia :}
+
+\textbf{3. Correctitud :}
 
 \section{Rompiendo Amistades}
 

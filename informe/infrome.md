@@ -64,42 +64,7 @@ Teniendo en cuenta que $a$ es el último acierto conocido, en términos del prob
 
 ### Solución
 
-1.Inicialización 
 
-Comenzamos con los siguientes valores:
-- Saldo inicial : 1
-- Límite inferior: 0.
-
-2. Proceso de Búsqueda : 
-- Sea $a$ último acierto conocido.
-- Sea $b$ último fallo conocido.
-- Sea $m$ cantidad de dinero disponible.
-- Sea $k$ número que vamos a comparar 
-con $M$.
-
-Entonces $k = min(m, (a+b)/2)$. Es 
-decir si podemos preguntaremos por la 
-mitad del conjunto de búsqueda 
-restante, en otro caso preguntaremos 
-por la cantidad de dinero que tenemos 
-disponible. Como resultado si $a == b$ 
-entonces $a == M$.
-
-3. Correctitud : 
-
-La estrategia que estamos utilizando es una búsqueda binaria adaptada para encontrar el límite M.
-
-3.1 Invariantes:
-Durante cada iteración del ciclo, mantenemos dos invariantes:
-- El valor de $low$ es siempre menor o igual que M
-- El valor de $high$ es 
-siempre mayor o igual que M.
-- Si la operación es exitosa( $X \leq M$), entonces esto significa que hemos encontrado un valor que no excede a M, por lo que podemos actualizar el límite inferior: $low = X+1$
-- Si la operación es detectada ($X > M$): esto significa que $M < X$, por lo que modificamos el límite superior: $high = X -1$
-
-3.2 Convergencia
-
-3.3 Costo total
 
 
 
