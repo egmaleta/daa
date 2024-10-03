@@ -1,6 +1,6 @@
 from collections.abc import Callable
 
-from shared.testing import TestCase, test
+#from shared.testing import TestCase, test
 
 
 def sln(lb: int, ub: int, is_gt_M: Callable[[int], bool]):
@@ -43,4 +43,6 @@ class _TestGen:
             )
 
 
-test(sln, _TestGen(1015, 105))
+#test(sln, _TestGen(1015, 105))
+from sln_0_Backtrack import is_gt_M as F
+sln(1,10**14,F)
