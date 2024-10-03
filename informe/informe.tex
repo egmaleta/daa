@@ -315,9 +315,27 @@ Durante cada iteración del ciclo, mantenemos dos invariantes:\\
 
 - Si la operación es detectada ($X > M$): esto significa que $M < X$, por lo que modificamos el límite superior: $high = X -1$
 
-\textbf{3.1 Convergencia :}
+\textbf{3.1 Cálculo del número máximo de operaciones :}\\
 
-\textbf{3. Correctitud :}
+1. Rango inicial \\
+
+El rango inicial está entre $1$ y $10^14$, lo que significa que el tamaño máximo del rango es : $n = 10^14$.\\
+
+2. Reducción del rango en cada iteración : \\
+
+En cada iteraci\'on el rango se reduce en :
+
+$$
+reduction = min(\frac{(lb+ub)}{2}, money)
+$$
+
+En cada iteración, dado que estamos reduciendo el rango por lo menos en una unidad, podemos establecer que :
+
+$$
+n_k+1 = n_k - r_k
+$$
+
+
 
 \section{Rompiendo Amistades}
 
