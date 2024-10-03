@@ -219,56 +219,31 @@ A statement requiring citation \cite{Figueredo:2009dg}.
 
 \section{Banco}
 
-\lipsum[5] % Dummy text
+Eduardo es el gerente principal de un gran banco. Tiene acceso ilimitado al sistema de bases de datos del banco y, con unos pocos clics, puede mover cualquier cantidad de dinero de las reservas del banco a su propia cuenta privada. Sin embargo, el banco utiliza un sofisticado sistema de detección de fraude impulsado por IA, lo que hace que robar sea más difícil.
 
-\begin{enumerate}[noitemsep] % [noitemsep] removes whitespace between the items for a compact look
-\item First item in a list
-\item Second item in a list
-\item Third item in a list
-\end{enumerate}
+Eduardo sabe que el sistema antifraude detecta cualquier operación que supere un límite fijo de M euros, y estas operaciones son verificadas manualmente por un número de empleados. Por lo tanto, cualquier operación fraudulenta que exceda este límite es detectada, mientras que cualquier operación menor pasa desapercibida.
 
-%------------------------------------------------
+Eduardo no conoce el límite M y quiere descubrirlo. En una operación, puede elegir un número entero X y tratar de mover X euros de las reservas del banco a su propia cuenta. Luego, ocurre lo siguiente.
 
-\subsection{Paragraphs}
+Si X≤M, la operación pasa desapercibida y el saldo de la cuenta de Eduardo aumenta en X euros.  
+De lo contrario, si X>M, se detecta el fraude y se cancela la operación. Además, Eduardo debe pagar X euros de su propia cuenta como multa. Si tiene menos de X euros en la cuenta, es despedido y llevado a la policía.  
+Inicialmente, Eduardo tiene 1 euro en su cuenta. Ayúdalo a encontrar el valor exacto de M en no más de 105 operaciones sin que sea despedido.
 
-\lipsum[6] % Dummy text
+Entrada:
+Cada prueba contiene múltiples casos de prueba. La primera línea contiene el número de casos de prueba t (1≤t≤1000).
 
-\paragraph{Paragraph Description} \lipsum[7] % Dummy text
+Para cada caso de prueba, no hay entrada previa a la primera consulta, pero puedes estar seguro de que M es un número entero y 0≤M≤1014.
 
-\paragraph{Different Paragraph Description} \lipsum[8] % Dummy text
+Salida:
+Para cada caso de prueba, cuando sepas el valor exacto de M, imprime una única línea con el formato "! M". Después de eso, tu programa debe proceder al siguiente caso de prueba o terminar, si es el último.
 
-%------------------------------------------------
 
-\subsection{Math}
+\subsection{Modelación del problema}
 
-\lipsum[4] % Dummy text
+Dado que se conoce que $1 \leq M \leq 1014$ entonces podemos reducir el problema a buscar $M$ en el conjunto $P$ (ordenado) donde $P \sub Z \wedge P = [1:1014]$. Sea $is\_ gt\_ M(k)$ una función que determina si $k > M$ entonces se puede realizar una busqueda binaria en el conjunto $P$.
+Para realizar la búsqueda binaria se debe tener en cuenta que preguntar por un $k$ específico no puede ser siempre en la mitad. Es necesario tener en cuenta que lo mejor que se puede preguntar siempre para asegurar descartar la mayor cantidad de soluciones posibles es la mitad del conjunto pero dada la particularidad de que cada vez que la función $is\_ gt\_ M(k)$ responda $True$ la cantidad de dinero disponible disminuye en $k$ y nuestra cantidad de dinero nunca debe  ser menor que $0$.
+Teniendo en cuenta que $a$ es el último acierto conocido, en términos del problema carece de total sentido preguntar por un número $k$ donde $k<a$ y sólo preguntamos por $a$ si necesitamos recuperar dinero. 
 
-\begin{equation}
-\cos^3 \theta =\frac{1}{4}\cos\theta+\frac{3}{4}\cos 3\theta
-\label{eq:refname2}
-\end{equation}
-
-\lipsum[5] % Dummy text
-
-\begin{definition}[Gauss] 
-To a mathematician it is obvious that
-$\int_{-\infty}^{+\infty}
-e^{-x^2}\,dx=\sqrt{\pi}$. 
-\end{definition} 
-
-\begin{theorem}[Pythagoras]
-The square of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the other two sides.
-\end{theorem}
-
-\begin{proof} 
-We have that $\log(1)^2 = 2\log(1)$.
-But we also have that $\log(-1)^2=\log(1)=0$.
-Then $2\log(-1)=0$, from which the proof.
-\end{proof}
-
-%----------------------------------------------------------------------------------------
-%	RESULTS AND DISCUSSION
-%----------------------------------------------------------------------------------------
 
 \section{Rompiendo Amistades}
 
@@ -402,61 +377,6 @@ subgrafo inducido de $G'$ que es 3-regular, ya que siempre podemos tomar los vé
 \subsubsection{Solución}
 
 
-\lipsum[12] % Dummy text
-
-\begin{description}
-\item[Word] Definition
-\item[Concept] Explanation
-\item[Idea] Text
-\end{description}
-
-\lipsum[12] % Dummy text
-
-\begin{itemize}[noitemsep] % [noitemsep] removes whitespace between the items for a compact look
-\item First item in a list
-\item Second item in a list
-\item Third item in a list
-\end{itemize}
-
-\subsubsection{Table}
-
-\lipsum[13] % Dummy text
-
-\begin{table}[hbt]
-\caption{Table of Grades}
-\centering
-\begin{tabular}{llr}
-\toprule
-\multicolumn{2}{c}{Name} \\
-\cmidrule(r){1-2}
-First name & Last Name & Grade \\
-\midrule
-John & Doe & $7.5$ \\
-Richard & Miles & $2$ \\
-\bottomrule
-\end{tabular}
-\label{tab:label}
-\end{table}
-
-Reference to Table~\vref{tab:label}. % The \vref command specifies the location of the reference
-
-%------------------------------------------------
-
-\subsection{Figure Composed of Subfigures}
-
-Reference the figure composed of multiple subfigures as Figure~\vref{fig:esempio}. Reference one of the subfigures as Figure~\vref{fig:ipsum}. % The \vref command specifies the location of the reference
-
-\lipsum[15-18] % Dummy text
-
-\begin{figure}[tb]
-\centering
-\subfloat[A city market.]{\includegraphics[width=.45\columnwidth]{Lorem}} \quad
-\subfloat[Forest landscape.]{\includegraphics[width=.45\columnwidth]{Ipsum}\label{fig:ipsum}} \\
-\subfloat[Mountain landscape.]{\includegraphics[width=.45\columnwidth]{Dolor}} \quad
-\subfloat[A tile decoration.]{\includegraphics[width=.45\columnwidth]{Sit}}
-\caption[A number of pictures.]{A number of pictures with no common theme.} % The text in the square bracket is the caption for the list of figures while the text in the curly brackets is the figure caption
-\label{fig:esempio}
-\end{figure}
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
