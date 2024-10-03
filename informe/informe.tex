@@ -320,7 +320,7 @@ Durante cada iteración del ciclo, mantenemos dos invariantes:\\
 
 1. Rango inicial \\
 
-El rango inicial está entre $1$ y $10^14$, lo que significa que el tamaño máximo del rango es : $n = 10^14$.\\
+El rango inicial está entre $1$ y $1014$, lo que significa que el tamaño máximo del rango es : $n = 1014$.\\
 
 2. Reducción del rango en cada iteración : \\
 
@@ -376,7 +376,7 @@ Es posible eliminar aristas del grafo G (sin eliminarlas todas) de manera tal qu
 
 También podemos verlo de la siguiente manera: \\
 
-Dado un grafo G determinar si existe un subgrago G' de G tal que G' es regular de grado 3.
+Dado un grafo G determinar si existe un subgrago G' de G tal que G' es regular de grado 3.\\
 
 
 \subsection{Np-Completitud}
@@ -393,20 +393,20 @@ Para demostrar que un problema es $NP-Completo$ hay que demostrar que:\\
 Dado un grafo G y un conjunto de aristas que supuestamente forman un subgrafo regular de grado 3, podemos verificar en 
 tiempo polinomial si este subgrafo es regular de grafo 3. Para ello, recorremos todas las aristas del subgrafo y contamos el grado de
 cada vértice. Si todos los vértices tienen grado 3, entonces el subgrafo es regular de grado 3. Este procedimiento tiene un costo de 
-$O(|V|+|E|)$, siendo $|V|$ la cantidad de vértices y $|E|$ la cantidad de aristas.
+$O(|V|+|E|)$, siendo $|V|$ la cantidad de vértices y $|E|$ la cantidad de aristas.\\
 
 
 \textbf{Paso2: Demostrar que SR3 es NP-Completo}\\
 
 Para demostrar que el problema CSP es NP-completo, se necesita realizar una reducción desde un problema conocido como NP-completo. 
-En este caso, se utilizará el problema de 3-coloración.
+En este caso, se utilizará el problema de 3-coloración.\\
 
 
 \textbf{ Problema de 3-coloración} \\
 
 
 Dado un grafo no dirigido $G = (V,E)$ determinar si existe una partición del conjunto de vértices $V$,
-def la forma ${V1,V2,V3}$ tal que no existen aristas entre los vertices que pertenecen a la misma partición $Vi$.\\
+de la forma ${V1,V2,V3}$ tal que no existen aristas entre los vertices que pertenecen a la misma partición $Vi$.\\
 
 
 Definiciones:
@@ -421,7 +421,7 @@ Definiciones:
 
 -$K_n'$ :Grafo completo de n vértices al que se le quita una arista (este grafo tiene todos los vértices con grado n-1, excepto dos vértices que tienen grado n-2).
 
--$3-partición$ : Dividir el conjunto de vértices en 3 conjuntos disjuntos.\\
+-3-partición : Dividir el conjunto de vértices en 3 conjuntos disjuntos.\\
 
 
 
@@ -432,46 +432,46 @@ A partir del grafo $G$, se construye un nuevo grafo $G'$ siguiendo los pasos sig
 1. \textbf{Ciclos} : Por cada vértice $v_i$ en $V(G)$, se crean 3 ciclos (denotados como : $C^1_i, C^2_i, C^3_i$), 
 cada uno con una longitud de $2*d(v_i) + 1$. Los vértices de cada ciclo son denotados como $c_{ij}^{h} , 1 \leq i \leq n , 1 \leq d \leq 2*d(v_i) + 1 , 1 \leq h \leq 3 $.\\
 
-2. \textbf{Subgrafos} : Por cada arista $e_j \in E(G)$ se crean 3 subgrafos ($D^1_j, D^2_j, D^3_j$), donde cada uno es un $K_4'$. Los dos vértices con grado 2 en cada 
+2. \textbf{Subgrafos} : Por cada arista $e_j \in E(G)$ se crean 3 subgrafos en G' ($D^1_j, D^2_j, D^3_j$), donde cada uno es un $K_4'$. Los dos vértices con grado 2 en cada 
 subgrafo son denotados como $x^h_i$ y $y^h_j$\\
 
 3. \textbf{Conexiones} : Por cada arista entre los vértices $v_s$ y $v_t$ en G :
 
 - Se seleccionan dos vértices $c_{sa}^{h}$ y $c_{sb}^{h}$ ($c_{sa}^{h}$ y $c_{sb}^{h}$) que aún tengan grado 2 de los ciclos correspondientes a $v_s$ y $v_t$, $C^h_s$ $(C^h_t)$.
 
-- Por cada $1\leq h \leq 3$, se agregan a $G'$ las aristas $<c_{sa}^{h},x^h_j> , c_{ta}^{h},y^h_j , c_{ta}^{h},x^h_j  y c_{tb}^{t}, y^h_j$\\
+- Por cada $1\leq h \leq 3$, se agregan a $G'$ las aristas $<c_{sa}^{h},x^h_j> , <c_{sb}^{h},y^h_j> , <c_{ta}^{h},x^h_j>  y <c_{tb}^{t}, y^h_j >$\\
 
 Una vez consideradas todas las aristas en
 el paso (3), se tiene que para cada ciclo $C^h_i$ $( 1\leq i \leq n, 1 \leq h \leq 3 )$ solo queda un vértice con degree 2. Nombremos
 dichos vértices como $w^h_i$.\\
 
-4. \textbf{Construcción Adicional}: Por cada $1 leq i \leq n$, se construye un subgrafo $U_i$, que es un $K_4'$ más un vértice al que denominaremos $u_i$, los vértices de grado 2 del $K_4'$ los denominaremos 
+4. \textbf{Construcción Adicional}: Por cada $1 \leq i \leq n$, se construye un subgrafo $U_i$, que es un $K_4'$ más un vértice al que denominaremos $u_i$, los vértices de grado 2 del $K_4'$ los denominaremos 
 $x_i$ y $y_i$, el vértice $u_i$ se une a los restantes del $K4'$ mediante una arista $<x_i, u_i>$. 
 
 Se toman todos los grafos $U_i$ y se agregan a $G'$. junto con las aristas $<u_i,w^1_i>$, $<y_i, w^2_i>$ y $<y_i, w^3_i>$.\\
 
 
-5. \textbf{Ciclo final} : Se agrega el ciclo $C'$ de longitud $2n$ a $G'$, conformado por los vértices ${a_11,..., a_1n, a21,..., a_2n}$ y se agregan las aristas $<a_pi, u_i>$ para $p = 1,2$.\\
+5. \textbf{Ciclo final} : Se agrega el ciclo $C'$ de longitud $2n$ a $G'$, conformado por los vértices ${a_{11},..., a_{1n}, a_{21},..., a_{2n}}$ y se agregan las aristas $<a_{pi}, u_i>$ para $p = 1,2$.\\
 
 
 \textbf{Paso4: Demostrar que G es 3-coloreable si y solo si G' tiene un subgrafo regular de grado 3  }\\
 
-$(\Rightarrow)$ Sea G un grafo 3-coloreable, y una 3-partición de $V(G)$ tal que en cada conjunto $V_i$ queden solo vértices de un mismo color, entonces existe un grafo $H$, 
-subgrafo inducido de $G'$ que es 3-regular, ya que siempre podemos tomar los vértices de la siguiente forma:
+$(\Rightarrow)$ Sea G un grafo 3-coloreable, y una 3-partición de $V(G)$ tal que en cada conjunto $V_i$ queden solo vértices de un mismo color de G, entonces existe un grafo $H$, 
+subgrafo inducido de $G'$ que es 3-regular, ya que siempre podemos tomar los vértices de la siguiente forma:\\
 
-1. Todos los vértices $a_ij$ etán en $H$
+1. Todos los vértices $a_{ij}$ etán en $H$
 
 2. Todos los vértices $u_i$ est\'an en H.
 
-3. Si $v_i$ de G est\'a en el conjunto $V_c$ de la tricoloraci\'on, entonces los v\'ertices $c_ij$ del ciclo $C^c_i$ est\'an en H.
+3. Si $v_i$ de G est\'a en el conjunto $V_c$ de la tricoloraci\'on, entonces los v\'ertices $c_{ij}$ del ciclo $C^c_i$ est\'an en H.
 
 4. Si $ c \neq 1$ para el conjunto $V_c$ al que pertenece $v_i$ entonces los vértices de $U_i$ pertenecen a H.
 
-5. Si la arista $e_j$ es adyacente al v\'ertice $v_i$ que est\'a en el conjunto $V_c$, entonces los v\'ertices de $D^c_j$ adyacente a $C^c_j$ est\'an en H. \\
+5. Si la arista $e_j$ es adyacente al v\'ertice $v_i$ que est\'a en el conjunto $V_c$, entonces los v\'ertices de $D^c_j$ adyacente a $C^c_i$ est\'an en H. \\
 
 
 El subgrafo $H$ existe para cualquier 3-partición de G, y cuando la 3-partición corresponde con una coloración se puede comprobar que todos los vértices en
-$H $tienen grado 3, en principio en $G'$ todos los vértices son de grado 3 excepto los $x_{jp}^{c}$ y $y_{jp}^{c}$ de los $D_{jp}^{c}$ que son de grado 4 pero en el subgrafo se hace 
+$H$ tienen grado 3, en principio en $G'$ todos los vértices son de grado 3 excepto los $x_{jp}^{c}$ y $y_{jp}^{c}$ de los $D_{jp}^{c}$ que son de grado 4 pero en el subgrafo se hace 
 una construcción a partir de una coloración y en $G'$ los $D_{jp}^{c}$ grafos reemplazan aristas, entonces los vértices $x_{jp}^{c}$ y $y_{jp}^{c}$ están conectados a vértices de círculos que
 no pertenecerán ambos a H, de donde obligatoriamente quedan en grado 3. De
 igual modo ocurre con los vértices $u_i$ y $y_i$ de los $U_i$ , quienes tienen grado 4 cada uno en G, pero como H lo formamos considerando la 3-partición y cada vértice
@@ -484,7 +484,7 @@ o en el $V_3$ de la 3-partición. Por tanto en $H$, todos los vértices tienen g
 
 
 $(\Leftarrow )$ Si $G'$ contiene un subgrafo 3-regular $H$, entonces sobre H se cum-
-plen las siguientes propiedades: //
+plen las siguientes propiedades: \\
 
 
 1. Todos los vértices $a_{pi}$ y $u_i$ pertenecen a $H$.
@@ -492,7 +492,7 @@ plen las siguientes propiedades: //
 2. Por cada i, $1 \leq i \leq n$, exactamente uno de los ciclos $C^h_i$ está en $H$.
 
 3. Por cada i, $1 \leq i \leq n$, si $C^h_i$ está en $H$, entonces ningún otro $C^h_j$ para
-toda j tal que $< i, j > \in (G)$. \\
+toda j tal que $< i, j > \in E(G)$. \\
 
 \textbf{Dem1.} Supongamos que en H no está alguno de los $u_i$ , como ese vértice
 no estaría, sus adyacentes en $C'$ quedarían con grado 2 por lo que no podrían
@@ -534,7 +534,7 @@ tamente 3, todos sus vecinos tienen que pertenecer también a H, de donde los
 vértices de los $D^h_j$ de las aristas $e_j$ que inciden en $v_i$ en G pertenecen a H y los
 vértices $x^h_j$ y $y^h_j$ están conectados a vértices de $C^h_i$ y tienen que para alcanzar el
 grado 3 obligatoriamente incluir a todos los vértices de $D^h_j$ ; por lo que si para
-algún $v_k$ adyacente a $v_i$ , el ciclo $C^h_k$ también estuviese en H, sea $e_j'$ la arista
+algún $v_k$ adyacente a $v_i$ , el ciclo $C^h_k$ también estuviese en H, sea $e_{j'}$ la arista
 que une a $v_i$ con $v_k$ , los vértices $x_{j'}^{h}$ y $y_{j'}^{h}$ tienen que tener tanto la arista que los conecta
 con uno de los vértices de $C^h_i$ como la que los conecta con uno de los vértices de $C^h_k$, además de que obligatoriamente tienen que estar 
 conectados a sus dos adyacentes en $D_{j'}^{h}$ porque al menos tienen que incluir uno y esto condiciona que se agregue el otro al ser adyacentes 
@@ -552,10 +552,6 @@ la partición, de donde si G' tiene H como subgrafo cúbico, entonces G es
 \subsection{Solución Backtrack}
 
 Se implement\'o una solución para buscar un subgrafo regular de grado 3 utilizando una estrategia Backtrack.\\
-
-\textbf{Correctitud}\\
-
-Para demostrar la correctitud del algoritmo, podemos considerar los siguientes puntos: \\
 
 \textbf{Caso base}\\
 
