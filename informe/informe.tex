@@ -359,6 +359,43 @@ Definiciones:
 
 \textbf{Paso3: Transformación de la entrada  }\\
 
+A partir del grafo $G$, se construye un nuevo grafo $G'$ siguiendo los pasos siguientes:\\
+
+1. \textbf{Ciclos} : Por cada vértice $v_i$ en $V(G)$, se crean 3 ciclos (denotados como : $C^1_i, C^2_i, C^3_i$), 
+cada uno con una longitud de $2*d(v_i) + 1$. Los vértices de cada ciclo son denotados como $c^h_i_j$, $1 \leq i \leq n$,$ 1 \leq d \leq 2*d(v_i) + 1$,$ 1 \leq h \leq 3 $.\\
+
+2. \textbf{Subgrafos} : Por cada arista $e_j \in E(G)$ se crean 3 subgrafos ($D^1_j, D^2_j, D^3_j$), donde cada uno es un $K_4'$. Los dos vértices con grado 2 en cada 
+subgrafo son denotados como $x^h_i$ y $y^h_j$\\
+
+3. \textbf{Conexiones} : Por cada arista entre los vértices $v_s$ y $v_t$ en G :
+
+- Se seleccionan dos vértices $c^h_sa$ y $c^h_sb$ ($c^h_sa$ y $c^h_sb$) que aún tengan grado 2 de los ciclos correspondientes a $v_s$ y $v_t$, $C^h_s$ $(C^h_t)$.
+
+- Por cada $1\leq h \leq 3$, se agregan a $G'$ las aristas $<c^h_sa,x^h_j>$, $c^h_ta,y^h_j$, $c^h_ta,x_h_j$ y $c^t_tb, y^h_j$\\
+
+Una vez consideradas todas las aristas en
+el paso (3), se tiene que para cada ciclo $C^h_i$ $( 1\leq i \leq n, 1 \leq h \leq 3 )$ solo queda un vértice con degree 2. Nombremos
+dichos vértices como $w^h_i$.\\
+
+4. \textbf{Construcción Adicional}: Por cada $1 leq i \leq n$, se construye un subgrafo $U_i$, que es un $K_4'$ más un vértice al que denominaremos $u_i$, los vértices de grado 2 del $K_4'$ los denominaremos 
+$x_i$ y $y_i$, el vértice $u_i$ se une a los restantes del $K4'$ mediante una arista $<x_i, u_i>$. 
+
+Se toman todos los grafos $U_i$ y se agregan a $G'$. junto con las aristas $<u_i,w^1_i>$, $<y_i, w^2_i>$ y $<y_i, w^3_i>$.\\
+
+
+5. \textbf{Ciclo final} : Se agrega el ciclo $C'$ de longitud $2n$ a $G'$, conformado por los vértices ${a_11,..., a_1n, a21,..., a_2n}$ y se agregan las aristas $<a_pi, u_i>$ para $p = 1,2$.\\
+
+
+\textbf{Paso4: Demostrar que G es 3-coloreable si y solo si G' tiene un subgrafo regular de grado 3  }\\
+
+(\Rightarrow ) Sea G un grafo 3-coloreable, y una 3-partición de $V(G)$ tal que en cada conjunto $V_i$ queden solo vértices de un mismo color, entonces existe un grafo $H$, 
+subgrafo inducido de $G'$ que es 3-regular, ya que siempre podemos tomar los vértices de la siguiente forma:
+
+1. Todos los vértices $a_ij$ etán en $H$
+
+
+
+
 
 
 
