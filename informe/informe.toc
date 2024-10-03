@@ -1,12 +1,11 @@
 \contentsline {section}{\numberline {1}{Corrupción}}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}{Modelacion del problema}}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}{Solución 1: Utilizando el algoritmo de Dijkstra}}{2}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}{Análisis de Correctitud}}{3}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}{Análisis de Complejidad Temporal}}{3}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.3}{Solución 2: Utilizando el algoritmo de Floyd-Warshal}}{4}{subsection.1.3}%
 \contentsline {section}{\numberline {2}{Banco}}{4}{section.2}%
 \contentsline {subsection}{\numberline {2.1}{Modelación del problema}}{4}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}{Solución: Búsqueda Binaria}}{5}{subsection.2.2}%
 \contentsline {section}{\numberline {3}{Rompiendo Amistades}}{6}{section.3}%
 \contentsline {subsection}{\numberline {3.1}{Modelación del problema}}{6}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}{Np-Completitud}}{6}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}{Solución}}{8}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}{Np-Completitud}}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}{Solución Backtrack}}{9}{subsection.3.3}%

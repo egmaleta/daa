@@ -68,25 +68,25 @@ BCOR5mm, % Binding correction
 
 \tableofcontents % Print the table of contents
 
-\listoffigures % Print the list of figures
+% \listoffigures % Print the list of figures
 
-\listoftables % Print the list of tables
+% \listoftables % Print the list of tables
 
 %----------------------------------------------------------------------------------------
 %	ABSTRACT
 %----------------------------------------------------------------------------------------
 
-\section*{Abstract} % This section will not appear in the table of contents due to the star (\section*)
+% \section*{Abstract} % This section will not appear in the table of contents due to the star (\section*)
 
-\lipsum[1] % Dummy text
+% \lipsum[1] % Dummy text
 
-%----------------------------------------------------------------------------------------
-%	AUTHOR AFFILIATIONS
-%----------------------------------------------------------------------------------------
+% %----------------------------------------------------------------------------------------
+% %	AUTHOR AFFILIATIONS
+% %----------------------------------------------------------------------------------------
 
-\let\thefootnote\relax\footnotetext{* \textit{Department of Biology, University of Examples, London, United Kingdom}}
+% \let\thefootnote\relax\footnotetext{* \textit{Department of Biology, University of Examples, London, United Kingdom}}
 
-\let\thefootnote\relax\footnotetext{\textsuperscript{1} \textit{Department of Chemistry, University of Examples, London, United Kingdom}}
+% \let\thefootnote\relax\footnotetext{\textsuperscript{1} \textit{Department of Chemistry, University of Examples, London, United Kingdom}}
 
 %----------------------------------------------------------------------------------------
 
@@ -148,9 +148,10 @@ lo utilizamos en nuestro algoritmo ya sabiendo que el camino entre estos des vé
 distancia mínima.\\
 
 Luego, para darle solución al problema, tenemos la función $solver$ que calcula la cardinalidad de algún 
-camino de distancia mínima entre todos los pares de vértices del grafo.
+camino de distancia mínima entre todos los pares de vértices del grafo.\\
 
-\subsection{Análisis de Correctitud}
+
+\textbf{Análisis de Correctitud}
 
 La función $solver$ se basa en el algoritmo de Dikstra para calcular las distancias mínimas desde 
 cada vértice a todos los demás vértices en el grafo. A continuación se desglosan los pasos que se realizan:\\
@@ -179,10 +180,10 @@ Correctitud : \\
 El algoritmo de Dijkstra garantiza que las distancias calculadas son las mínimas desde el vértice inicial $v$. Por lo tanto, 
 cualquier camino reconstruido utilizando esas distancias es correcto. Luego, después de reconstruir los caminos con la función $reconstruir_camino$, 
 lo que se almacena en el diccionario $long_de_caminos$ son las longitudes de los caminos de distancia minima entre todo par de 
-vértices.
+vértices.\\
 
 
-\subsection{Análisis de Complejidad Temporal}
+\textbf{Análisis de Complejidad Temporal}\\
 
 1. Complejidad de Dijkstra:\\
 
@@ -206,10 +207,10 @@ Sumando todo, la complejidad total del algoritmo $solver$ es: $O(V^2 * log(V) + 
 En un grafo denso donde $E$ puede ser aproximadamente $V^2$, el caso peor sería $O(V^3)$
 
 
+\subsection{Solución 2: Utilizando el algoritmo de Floyd-Warshal}
 
 
-
-A statement requiring citation \cite{Figueredo:2009dg}.
+% A statement requiring citation \cite{Figueredo:2009dg}.
 
 
  
@@ -225,14 +226,14 @@ Eduardo sabe que el sistema antifraude detecta cualquier operación que supere u
 
 Eduardo no conoce el límite M y quiere descubrirlo. En una operación, puede elegir un número entero X y tratar de mover X euros de las reservas del banco a su propia cuenta. Luego, ocurre lo siguiente.\\
 
-Si X≤M, la operación pasa desapercibida y el saldo de la cuenta de Eduardo aumenta en X euros.  
-De lo contrario, si X>M, se detecta el fraude y se cancela la operación. Además, Eduardo debe pagar X euros de su propia cuenta como multa. Si tiene menos de X euros en la cuenta, es despedido y llevado a la policía.  
+Si $X \leq M$, la operación pasa desapercibida y el saldo de la cuenta de Eduardo aumenta en X euros.  
+De lo contrario, si $X > M$, se detecta el fraude y se cancela la operación. Además, Eduardo debe pagar X euros de su propia cuenta como multa. Si tiene menos de X euros en la cuenta, es despedido y llevado a la policía.  
 Inicialmente, Eduardo tiene 1 euro en su cuenta. Ayúdalo a encontrar el valor exacto de M en no más de 105 operaciones sin que sea despedido.\\
 
 Entrada:
-Cada prueba contiene múltiples casos de prueba. La primera línea contiene el número de casos de prueba t (1≤t≤1000).\\
+Cada prueba contiene múltiples casos de prueba. La primera línea contiene el número de casos de prueba $t (1 \leq t \leq 1000)$.\\
 
-Para cada caso de prueba, no hay entrada previa a la primera consulta, pero puedes estar seguro de que M es un número entero y 0≤M≤1014.\\
+Para cada caso de prueba, no hay entrada previa a la primera consulta, pero puedes estar seguro de que M es un número entero y $0 \leq M \leq 1014$.\\
 
 Salida:
 Para cada caso de prueba, cuando sepas el valor exacto de M, imprime una única línea con el formato "! M". Después de eso, tu programa debe proceder al siguiente caso de prueba o terminar, si es el último.\\
@@ -240,7 +241,7 @@ Para cada caso de prueba, cuando sepas el valor exacto de M, imprime una única 
 
 \subsection{Modelación del problema}
 
-Dado que se conoce que $1 \leq M \leq 1014$ entonces podemos reducir el problema a buscar $M$ en el conjunto $P$ (ordenado) donde $P \sub Z \wedge P = [1:1014]$. Sea $is\_ gt\_ M(k)$ una función que determina si $k > M$ entonces se puede realizar una busqueda binaria en el conjunto $P$.
+Dado que se conoce que $1 \leq M \leq 1014$ entonces podemos reducir el problema a buscar $M$ en el conjunto $P$ (ordenado) donde $P \subset Z \wedge P = [1:1014]$. Sea $is\_ gt\_ M(k)$ una función que determina si $k > M$ entonces se puede realizar una busqueda binaria en el conjunto $P$.
 Para realizar la búsqueda binaria se debe tener en cuenta que preguntar por un $k$ específico no puede ser siempre en la mitad. Es necesario tener en cuenta que lo mejor que se puede preguntar siempre para asegurar descartar la mayor cantidad de soluciones posibles es la mitad del conjunto,
 pero dada la particularidad de que cada vez que la función $is\_ gt\_ M(k)$ responda $True$ la cantidad de dinero disponible disminuye en $k$ y nuestra cantidad de dinero nunca debe  ser menor que $0$.
 Teniendo en cuenta que $a$ es el último acierto conocido, en términos del problema carece de total sentido preguntar por un número $k$ donde $k<a$ y sólo preguntamos por $a$ si necesitamos recuperar dinero. 
@@ -250,19 +251,19 @@ El objetivo principal del algoritmo es determinar el valor de M, que se encuentr
 
 Parámetros :\\
 
--lb : Límite inferior del rango de búsqueda.
+-$lb$ : Límite inferior del rango de búsqueda.
 
 
--ub : Límite superior del rango de búsqueda.
+-$ub$ : Límite superior del rango de búsqueda.
 
 
-- is_gt_M : Función que toma una suposicion y devuelve True si la esta es mayor que M y False en caso contrario\\
+- $is\_gt\_M()$ : Función que toma una suposicion y devuelve True si la esta es mayor que M y False en caso contrario\\
 
 Variables internas: \\
 
--money : representa la cantidad de dinero actual.
+-$money$ : representa la cantidad de dinero actual.
 
--fuel: contador de iteraciones realizadas dureante la búsqueda. \\
+-$fuel$: contador de iteraciones realizadas dureante la búsqueda. \\
 
 \textbf{1.Inicialización}
  
@@ -378,13 +379,13 @@ También podemos verlo de la siguiente manera: \\
 Dado un grafo G determinar si existe un subgrago G' de G tal que G' es regular de grado 3.
 
 
-\subsubsection{Np-Completitud}
+\subsection{Np-Completitud}
 
 Para demostrar que un problema es $NP-Completo$ hay que demostrar que:\\
 
 1. El problema está en NP.
 
-2. Se puede reducir un problema conocido como $NP-Completo$ a este problema en tiempo polinómico.
+2. Se puede reducir un problema conocido como $NP-Completo$ a este problema en tiempo polinómico.\\
 
 \textbf{Paso1: Probar que el problema de encontrar un subgrafo regular de grado 3 (SR3) está NP }\\
 
@@ -420,7 +421,7 @@ Definiciones:
 
 -$K_n'$ :Grafo completo de n vértices al que se le quita una arista (este grafo tiene todos los vértices con grado n-1, excepto dos vértices que tienen grado n-2).
 
--3-partición : Dividir el conjunto de vértices en 3 conjuntos disjuntos.\\
+-$3-partición$ : Dividir el conjunto de vértices en 3 conjuntos disjuntos.\\
 
 
 
@@ -429,16 +430,16 @@ Definiciones:
 A partir del grafo $G$, se construye un nuevo grafo $G'$ siguiendo los pasos siguientes:\\
 
 1. \textbf{Ciclos} : Por cada vértice $v_i$ en $V(G)$, se crean 3 ciclos (denotados como : $C^1_i, C^2_i, C^3_i$), 
-cada uno con una longitud de $2*d(v_i) + 1$. Los vértices de cada ciclo son denotados como $c^h_i_j$, $1 \leq i \leq n$,$ 1 \leq d \leq 2*d(v_i) + 1$,$ 1 \leq h \leq 3 $.\\
+cada uno con una longitud de $2*d(v_i) + 1$. Los vértices de cada ciclo son denotados como $c_{ij}^{h} , 1 \leq i \leq n , 1 \leq d \leq 2*d(v_i) + 1 , 1 \leq h \leq 3 $.\\
 
 2. \textbf{Subgrafos} : Por cada arista $e_j \in E(G)$ se crean 3 subgrafos ($D^1_j, D^2_j, D^3_j$), donde cada uno es un $K_4'$. Los dos vértices con grado 2 en cada 
 subgrafo son denotados como $x^h_i$ y $y^h_j$\\
 
 3. \textbf{Conexiones} : Por cada arista entre los vértices $v_s$ y $v_t$ en G :
 
-- Se seleccionan dos vértices $c^h_sa$ y $c^h_sb$ ($c^h_sa$ y $c^h_sb$) que aún tengan grado 2 de los ciclos correspondientes a $v_s$ y $v_t$, $C^h_s$ $(C^h_t)$.
+- Se seleccionan dos vértices $c_{sa}^{h}$ y $c_{sb}^{h}$ ($c_{sa}^{h}$ y $c_{sb}^{h}$) que aún tengan grado 2 de los ciclos correspondientes a $v_s$ y $v_t$, $C^h_s$ $(C^h_t)$.
 
-- Por cada $1\leq h \leq 3$, se agregan a $G'$ las aristas $<c^h_sa,x^h_j>$, $c^h_ta,y^h_j$, $c^h_ta,x_h_j$ y $c^t_tb, y^h_j$\\
+- Por cada $1\leq h \leq 3$, se agregan a $G'$ las aristas $<c_{sa}^{h},x^h_j> , c_{ta}^{h},y^h_j , c_{ta}^{h},x^h_j  y c_{tb}^{t}, y^h_j$\\
 
 Una vez consideradas todas las aristas en
 el paso (3), se tiene que para cada ciclo $C^h_i$ $( 1\leq i \leq n, 1 \leq h \leq 3 )$ solo queda un vértice con degree 2. Nombremos
@@ -455,21 +456,165 @@ Se toman todos los grafos $U_i$ y se agregan a $G'$. junto con las aristas $<u_i
 
 \textbf{Paso4: Demostrar que G es 3-coloreable si y solo si G' tiene un subgrafo regular de grado 3  }\\
 
-(\Rightarrow ) Sea G un grafo 3-coloreable, y una 3-partición de $V(G)$ tal que en cada conjunto $V_i$ queden solo vértices de un mismo color, entonces existe un grafo $H$, 
+$(\Rightarrow)$ Sea G un grafo 3-coloreable, y una 3-partición de $V(G)$ tal que en cada conjunto $V_i$ queden solo vértices de un mismo color, entonces existe un grafo $H$, 
 subgrafo inducido de $G'$ que es 3-regular, ya que siempre podemos tomar los vértices de la siguiente forma:
 
 1. Todos los vértices $a_ij$ etán en $H$
 
+2. Todos los vértices $u_i$ est\'an en H.
+
+3. Si $v_i$ de G est\'a en el conjunto $V_c$ de la tricoloraci\'on, entonces los v\'ertices $c_ij$ del ciclo $C^c_i$ est\'an en H.
+
+4. Si $ c \neq 1$ para el conjunto $V_c$ al que pertenece $v_i$ entonces los vértices de $U_i$ pertenecen a H.
+
+5. Si la arista $e_j$ es adyacente al v\'ertice $v_i$ que est\'a en el conjunto $V_c$, entonces los v\'ertices de $D^c_j$ adyacente a $C^c_j$ est\'an en H. \\
+
+
+El subgrafo $H$ existe para cualquier 3-partición de G, y cuando la 3-partición corresponde con una coloración se puede comprobar que todos los vértices en
+$H $tienen grado 3, en principio en $G'$ todos los vértices son de grado 3 excepto los $x_{jp}^{c}$ y $y_{jp}^{c}$ de los $D_{jp}^{c}$ que son de grado 4 pero en el subgrafo se hace 
+una construcción a partir de una coloración y en $G'$ los $D_{jp}^{c}$ grafos reemplazan aristas, entonces los vértices $x_{jp}^{c}$ y $y_{jp}^{c}$ están conectados a vértices de círculos que
+no pertenecerán ambos a H, de donde obligatoriamente quedan en grado 3. De
+igual modo ocurre con los vértices $u_i$ y $y_i$ de los $U_i$ , quienes tienen grado 4 cada uno en G, pero como H lo formamos considerando la 3-partición y cada vértice
+puede estar sólo en uno de los 3 conjuntos, entonces de las aristas que inciden
+en $u_i$ solo se quedan las 2 que lo conectan al ciclo $C'$ y la que se corresponde a
+si $v_i$ está en el conjunto $V_1$ o no, y en los casos en los que se toma algún $y_i$ como
+parte del conjunto H, en él solo permanecen las dos aristas que lo conectan
+al resto del $U_i$ y solo una de las que indica si el vértice está en el conjunto $V_2$
+o en el $V_3$ de la 3-partición. Por tanto en $H$, todos los vértices tienen grado 3. \\
+
+
+$(\Leftarrow )$ Si $G'$ contiene un subgrafo 3-regular $H$, entonces sobre H se cum-
+plen las siguientes propiedades: //
+
+
+1. Todos los vértices $a_{pi}$ y $u_i$ pertenecen a $H$.
+
+2. Por cada i, $1 \leq i \leq n$, exactamente uno de los ciclos $C^h_i$ está en $H$.
+
+3. Por cada i, $1 \leq i \leq n$, si $C^h_i$ está en $H$, entonces ningún otro $C^h_j$ para
+toda j tal que $< i, j > \in (G)$. \\
+
+\textbf{Dem1.} Supongamos que en H no está alguno de los $u_i$ , como ese vértice
+no estaría, sus adyacentes en $C'$ quedarían con grado 2 por lo que no podrían
+estar en H, esto rompería el ciclo $C'$ produciendo que ninguno de sus vértices
+esté en H y estos a su vez al no poder estar en H, reducirían en 2 la cantidad
+de aristas de los restantes u i por lo que ninguno de los $u_i$ podría estar en H.
+Como cada $u_i$ es adyacente a un vértice de los $C^1_i$ , no se pudiera tener ningún
+vértice de los $C^1_i$ en $H$ y la eliminación de estos vértices quita la posibilidad a
+los de $D^1_j$ de pertenecer a H. De igual modo cada $u_i$ es adyacente al $x_i$ de los
+$U_i$ , de donde ningún vértice de los $U_i$ podría estar en H ya que $x_i$ pasaría a
+tener grado 2, al no poder estar, tampoco podrían u i1 y u i2 quienes al quitar x i
+quedarían con grado 2 y como esos tampoco estarían, se debe quitar también $y_i$ ,
+este último al estar conectado con un vértice de $C^2_i$ y con uno de $C^3_i$ hace que
+estos queden con grado 2 por lo que rompen los ciclos haciendo que ninguno de
+sus vértices puedan estar en H, esto finalmente provoca que los vértices de $D^2_i$
+y $D^3_i$ tampoco puedan estar en H, quedando $H = \emptyset$.
+Por tanto todos los $u_i$ tienen que estar en H y esto condiciona que todos
+los $a_{pi}$ estén en H ya que, entre las 3 aristas que permanezcan incidiendo en $u_i$
+en el subgrafo cúbico una de ellas obligatoriamente está conectada a uno de los
+$a_{pi}$ , como los $a_{pi}$ todos tienen grado 3 y son adyacentes a otros dos $a_{p'i'}$, si uno
+de ellos está, todos tienen que estar. \\
+
+
+\textbf{Dem2.}Como todos los $u_i$ están en H y los $a_{pi}$ , entonces para que $u_i$ tenga
+grado 3 en el grafo inducido por H, es necesario que a H se agregue o bien el
+vértice de $C^1_i$ al que $u_i$ es adyacente o el $x_i$ , pero nunca ambos. En caso que
+se agregue el vértice adyacente en $C^1_i$ , entonces todo el ciclo se debe agregar ya
+que el grado 3 de cada uno de los vértices depende de los restantes. En caso que
+se agregara el $y_i$ este para completar su grado 3 requiere que se agregue el resto de los vértices del $U_i$ y que para completar el grado 3 de $y_i$ se agregue o bien su
+adyacente en $C^2_i$ o en $C^3_i$, pero nunca ambos porque si no, pasaría a tener grado
+4. Con la adición de uno de estos vértices a H se debe agregar todo el ciclo $C^h_i$ al
+que pertenece por los mismos motivos que se agregaría $C^1_i$ en el caso anterior. De
+este modo se garantiza que para cada $i$, se agrega uno y solo uno de sus $C^h_i$ ciclos.\\
+
+\textbf{Dem3.}
+
+Si a H pertenecen los vértices de $C^h_i$ , como todos ellos tienen degree exac-
+tamente 3, todos sus vecinos tienen que pertenecer también a H, de donde los
+vértices de los $D^h_j$ de las aristas $e_j$ que inciden en $v_i$ en G pertenecen a H y los
+vértices $x^h_j$ y $y^h_j$ están conectados a vértices de $C^h_i$ y tienen que para alcanzar el
+grado 3 obligatoriamente incluir a todos los vértices de $D^h_j$ ; por lo que si para
+algún $v_k$ adyacente a $v_i$ , el ciclo $C^h_k$ también estuviese en H, sea $e_j'$ la arista
+que une a $v_i$ con $v_k$ , los vértices $x_{j'}^{h}$ y $y_{j'}^{h}$ tienen que tener tanto la arista que los conecta
+con uno de los vértices de $C^h_i$ como la que los conecta con uno de los vértices de $C^h_k$, además de que obligatoriamente tienen que estar 
+conectados a sus dos adyacentes en $D_{j'}^{h}$ porque al menos tienen que incluir uno y esto condiciona que se agregue el otro al ser adyacentes 
+entre ellos y tener grado exactamente 3, por lo que en ese caso $x_{j'}^{h}$ y $y_{j'}^{h}$ quedarían con grado, por tanto si $C^h_i$ está en H, ningún $C^h_k$ tal que $v_k$ adyacente a $v_i$ en G, puede estar en H.
+
+
+Por la proposición (2) implica que el subgrafo H es una 3-partición de
+los vértices de G' tal que el vértice $v_i$ está en la partición $c$ si $C^c_i \in H$. La
+proposición (3) asegura que vértices adyacentes estén en diferentes conjuntos en
+la partición, de donde si G' tiene H como subgrafo cúbico, entonces G es
+3-coloreable
 
 
 
+\subsection{Solución Backtrack}
+
+Se implement\'o una solución para buscar un subgrafo regular de grado 3 utilizando una estrategia Backtrack.\\
+
+\textbf{Correctitud}\\
+
+Para demostrar la correctitud del algoritmo, podemos considerar los siguientes puntos: \\
+
+\textbf{Caso base}\\
+
+La función \texttt{bt} tiene una condición base que verifica si \texttt{friendship\_count} es cero. Si es así, significa que se ha encontrado una combinación válida (aunque no necesariamente un subgrafo regular), lo cual es correcto.\\
+
+
+\textbf{Condiciones para Subgrafo Regular}\\
+
+La comprobación 
+\[
+\texttt{if all(len(edges) == 3 for edges in edges\_list)}
+\]
+asegura que todos los vértices en el subgrafo actual tienen exactamente 3 conexiones. Esta condición es necesaria para confirmar que se ha encontrado un subgrafo regular de grado 3.\\
+
+\textbf{Eliminación y Restauración de Aristas} \\
+
+Al eliminar una arista y hacer una llamada recursiva, el algoritmo explora todas las combinaciones posibles de conexiones. La restauración posterior garantiza que el estado del grafo se mantenga para futuras exploraciones.\\
+
+\textbf{Manejo de Excepciones}\\
+
+El uso de \texttt{\_SlnFound} como excepción para indicar que se ha encontrado un subgrafo regular asegura que el flujo del programa pueda interrumpirse adecuadamente al encontrar una solución válida.\\
+
+
+\textbf{Conclusión}\\
+
+El algoritmo es correcto bajo las condiciones establecidas, ya que verifica exhaustivamente todas las combinaciones posibles y asegura que cualquier subgrafo encontrado cumple con la propiedad de ser regular de grado 3. Sin embargo, su eficiencia puede ser un problema práctico debido a su complejidad exponencial.\\
 
 
 
-\subsubsection{Solución}
+\textbf{Complejidad temporal}\\
 
 
+La complejidad temporal del algoritmo se puede analizar considerando las operaciones realizadas en la función \texttt{sln} y en la función \texttt{bt}.\\
 
+
+\textbf{Función \texttt{sln} }\\
+
+\begin{itemize}
+    \item Inicializa el grafo con \( k \) vértices y agrega \( m \) aristas (donde \( m \) es el número de amistades). Este proceso tiene una complejidad de \( O(m) \).\\
+\end{itemize}
+
+\textbf{Función \texttt{bt} }\\
+
+\begin{itemize}
+    \item En el peor de los casos, la función \texttt{bt} realiza una búsqueda exhaustiva a través de todas las combinaciones posibles de aristas. Esto implica que, en cada llamada recursiva, se exploran las aristas del grafo.
+    \item La complejidad de esta búsqueda puede ser aproximada a \( O(2^m) \) en el peor caso, ya que se pueden eliminar o no eliminar cada arista, lo que genera un árbol de decisiones exponencial.
+\end{itemize}
+
+
+\textbf{Comprobaciones dentro de \texttt{bt}}\\
+
+\begin{itemize}
+    \item Las comprobaciones para determinar si todos los vértices tienen grado 3 (\texttt{all(len(edges) == 3 for edges in edges\_list)}) requieren tiempo lineal en relación al número de vértices, es decir, \( O(n) \).
+    \item Sin embargo, dado que se hace dentro de un contexto recursivo, esto se ejecuta múltiples veces a lo largo de la búsqueda.
+\end{itemize}
+
+
+\textbf{Resumen}\\
+La complejidad temporal del algoritmo es aproximadamente \( O(m + 2^m) \), donde \( m \) es el número de aristas. Esto indica que el algoritmo es exponencial en relación con el número de aristas, lo cual puede ser ineficiente para grafos grandes.
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
