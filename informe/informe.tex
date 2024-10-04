@@ -209,6 +209,45 @@ En un grafo denso donde $E$ puede ser aproximadamente $V^2$, el caso peor sería
 
 \subsection{Solución 2: Utilizando el algoritmo de Floyd-Warshal}
 
+El algoritmo original es modificado con una matrix $prevs$ donde en $prevs[i][j]$ se guarda el penúltimo vertice en el camino desde $i$ hacia $j$ (en $prevs[i][i]$ siempre se guarda $i$).
+La matrix se usa para obtener uno de los caminos de costo minimo (y por tanto su tamanyo) en la funcion $path_length$ para cada par de vertices del grafo, de existir camino alguno.
+
+
+\textbf{Análisis de Correctitud}
+
+La función $sln$ se basa en el algoritmo de Floyd-Warshal para calcular las distancias mínimas entre cada par de vertices. A continuación se desglosan los pasos que se realizan:\\
+
+
+- Inicialización :\\
+Se crea una matriz $dists$ donde en $dists[i][j]$ se guarda la distancia minima entre los vertices $i$ y $j$. En este momento $dists[i][j]$ es $\infty$ y $dists[i][i]$ es $0$.
+Se crea una matrix $prevs$ donde en $prevs[i][j]$ se guarda el penúltimo vertice en el camino desde $i$ hacia $j$. En este momento $dists[i][j]$ es $None$ i $dists[i][i]$ es $i$.
+
+
+- Iteración sobre cada vértice :\\ 
+Para cada vértice $v$ del grafo, se ejecuta el algoritmo de Dijkstra, obteniendo las distancias y los caminos desde $v$
+a todos los demás vértices.
+
+Uso del diccionario de $caminos$. Este se utiliza para rastrear el camino más corto desde el vértice inicial hasta cada 
+vértice en el grafo. Cada vez que se realiza una operación de relajación en el algoritmo, se actualiza el padre del vértice 
+que está siendo relajado. Esto asegura que, al final del algoritmo, podemos reconstruir el camino más corto desde el vértice inicial
+hasta cualquier otro vértice utilizando este diccionario.
+
+
+- Reconstrucción del camino : \\
+Para cada par de vértices $v$ y $w$, si estos son distintos, se reconstruye el camino mínimo utilizando la función $reconstruir_camino$. Luego, 
+si existe un camino, se almacenará la longitud de este en el diccionario\\
+
+
+Correctitud : \\
+El algoritmo de Dijkstra garantiza que las distancias calculadas son las mínimas desde el vértice inicial $v$. Por lo tanto, 
+cualquier camino reconstruido utilizando esas distancias es correcto. Luego, después de reconstruir los caminos con la función $reconstruir_camino$, 
+lo que se almacena en el diccionario $long_de_caminos$ son las longitudes de los caminos de distancia minima entre todo par de 
+vértices.\\
+
+
+\textbf{Análisis de Complejidad Temporal}\\
+
+foo
 
 % A statement requiring citation \cite{Figueredo:2009dg}.
 
@@ -398,7 +437,7 @@ $O(|V|+|E|)$, siendo $|V|$ la cantidad de vértices y $|E|$ la cantidad de arist
 
 \textbf{Paso2: Demostrar que SR3 es NP-Completo}\\
 
-Para demostrar que el problema CSP es NP-completo, se necesita realizar una reducción desde un problema conocido como NP-completo. 
+Para demostrar que el problema SR3 es NP-completo, se necesita realizar una reducción desde un problema conocido como NP-completo. 
 En este caso, se utilizará el problema de 3-coloración.\\
 
 
