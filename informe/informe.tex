@@ -247,7 +247,18 @@ vértices.\\
 
 \textbf{Análisis de Complejidad Temporal}\\
 
-foo
+1. Complejidad de Floyd-Warshal:\\
+
+Sea $n = |V(G)|$, el algoritmo actualiza la distancia de costo minimo entre los vertices $i$ y $j$, por cada par posible, $n$ veces, entonces $n$ veces realiza a lo sumo $3n^2$ operaciones (comparacion y actualizaciones de $dists$ y $prevs$),
+por tanto realiza $3n^3$ operaciones para poblar las matrices $dists$ y $prevs$ con los valores correctos.
+
+2. Reconstrucción del caminos:\\
+
+La complejidad temporal de $path\_length$ es $O (n)$ porque va construyendo el camino entre $v$ y $w$ cuando setea a $w$ con $prevs[v][w]$ hasta que $v = w$, y en el peor de los casos
+esta camino podria contener a $V(G)$. Esta operacion se realiza por cada par $i$ y $j$ de vertices, por tanto la complejidad temporal de la obtencion de todos los caminos (y sus tamanyos) es
+$O (n^3)$.
+
+Luego la complejidad temporal del algoritmo es $O (n^3)$.
 
 % A statement requiring citation \cite{Figueredo:2009dg}.
 
