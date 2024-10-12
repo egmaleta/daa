@@ -1,11 +1,12 @@
-from typing import Callable, Tuple
+from typing import Callable
 
-def sln_brute_force(lb: int, ub: int, is_gt_M: Callable[[int], bool]) -> Tuple[int, int]:
+
+def sln_brute_force(lb: int, ub: int, is_gt_M: Callable[[int], bool]):
     money = 1
     fuel = 0
 
     # Iterar desde el límite inferior hasta el límite superior
-    for guess in range(lb + 1, ub):  # Comenzamos desde lb + 1 hasta ub - 1
+    for guess in range(lb, ub):  # Comenzamos desde lb + 1 hasta ub - 1
         fuel += 1  # Incrementar el combustible por cada intento
 
         if is_gt_M(guess):
