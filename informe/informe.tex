@@ -296,6 +296,34 @@ Para realizar la búsqueda binaria se debe tener en cuenta que preguntar por un 
 pero dada la particularidad de que cada vez que la función $is\_ gt\_ M(k)$ responda $True$ la cantidad de dinero disponible disminuye en $k$ y nuestra cantidad de dinero nunca debe  ser menor que $0$.
 Teniendo en cuenta que $a$ es el último acierto conocido, en términos del problema carece de total sentido preguntar por un número $k$ donde $k<a$ y sólo preguntamos por $a$ si necesitamos recuperar dinero. 
 
+\subsection{Solución: Búsqueda Lineal}
+El algoritmo busca el valor de $M$ desde $(lb)$ hasta $(ub)$ y para cuando $is\_gt\_M$ evalua $True$.
+
+Parámetros :\\
+
+-$lb$ : Límite inferior del rango de búsqueda.
+
+
+-$ub$ : Límite superior del rango de búsqueda.
+
+
+- $is\_gt\_M()$ : Función que toma una suposicion y devuelve True si la esta es mayor que M y False en caso contrario\\
+
+Variables internas: \\
+
+-$fuel$: contador de iteraciones realizadas dureante la búsqueda. \\
+
+\textbf{3. Correctitud :} 
+
+El algoritmo siempre encuentra $M$ pues $lb <= M < ub$, pero no siempre en la cantidad de operaciones máxima. Si
+$0 <= M <= 1014$ y la cantidad de operaciones maxima a realizar es $105$, entonces el algoritmo solo encontrará a $M$
+de forma correcta si está entre $0$ y $104$ o entre $1014$ y $910$ (si la búsqueda es reversa).
+
+\textbf{Análisis de Complejidad Temporal :}\\
+
+La complejidad temporal del algoritmo es $O (ub-lb)$ en general, porque en el peor de los casos necesita hacer
+esa cantidad de preguntas para encontrar a $M$.
+
 \subsection{Solución: Búsqueda Binaria}
 El objetivo principal del algoritmo es determinar el valor de M, que se encuentra entre un límite inferior $(lb)$ y un límite superior $(ub)$. 
 
