@@ -484,6 +484,31 @@ También podemos verlo de la siguiente manera: \\
 Dado un grafo G determinar si existe un subgrago G' de G tal que G' es regular de grado 3.\\
 
 
+\subsection{Solución: Usando Backtracking}
+
+El algoritmo hace justo lo que se explica en el apartado de modelación, elimina aristas (sin eliminar todas) y comprueba si
+en la version del grafo resultante, cada vértice tiene una vecindad de tamaño 3 o ninguna vecindad. Esto se logra explorando
+todos las versiones del grafo resultantes de quitar cualquier subconjunto de $E(G)$. La exploración consiste en recorrer por
+las aristas del grafo y, por cada una de ellas, explorar recursivamente el resto con la arista removida y luego explorar el resto
+de forma normal. Cada vez que explora recursivamente el grafo sin una arista, se comprueba si este grafo es solucion del problema,
+en caso afirmativo el algoritmo para, de lo contrario sigue buscando.
+
+
+\textbf{Análisis de Correctitud}
+
+Dada la naturaleza de exploración del algoritmo, este puede comprobar toda versión del grafo resultante de substraerle cualquier
+subconjunto de aristas de $E(G)$, y puesto que puede comprobar todas, comprobara específicamente aquellas donde cada vértice tenga
+un vecindad de tamaño 3, o donde ningún vértice tiene aristas incidentes.
+
+
+\textbf{Análisis de Complejidad Temporal}\\
+
+Como por cada arista $a$, el algoritmo explora recursivamente los grafos $G - a$ y $G$, la complejidad temporal es exponencial, $O (2^|E(G)|)$
+en primera instancia. Pero la implementación del grafo $g$ en el algoritmo usa una matriz de adyacencia para almacenar las aristas, y por tanto $g.traverse$
+tiene una complejidad temporal $O (n^2)$ aunque produzca ($yield$) las $E(G)$ aristas del grafo. Por tanto la complejidad temporal
+$O (2^(n^2))$.
+
+
 \subsection{Np-Completitud}
 
 Para demostrar que un problema es $NP-Completo$ hay que demostrar que:\\
