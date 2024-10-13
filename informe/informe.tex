@@ -135,6 +135,33 @@ Sea $G = {V,E}$ un grafo,se quiere, para todo par de vértices $s$ y $t$ del gra
 participan en algún camino de distancia mínima entre $s$ y $t$.
 
 
+\subsection{Solución 1: Usando Backtracking}
+
+El algoritmo consiste en encontrar un camino de costo mínimo (y además su longitud, que es el objetivo final) por cada par
+de vértices $v$ y $w$ mediante la exploración de todas las formas de encontrar $w$ empezando por $v$. Cada vez que se
+encuentra un camino entre $v$ y $w$, se actualiza el costo mínimo y longitud del camino actuales en caso de ser
+necesario. En caso de encontrar varios caminos de costo mínimo entre un par de vertices, la longitud del camino que
+se mantiene es la del primer camino encontrado.
+
+
+\textbf{Análisis de Correctitud}
+
+El algoritmo es correcto porque explora todo camino posible entre todo par de vertices $v$, $w$, entre esos caminos
+están por tanto los de costo mínimo, luego la longitud de alguno de ellos (solución del ejercicio) puede obtenerse.
+
+
+\textbf{Análisis de Complejidad Temporal}\\
+
+La búsqueda de la longitud de algun camino de costo mínimo entre un par de vertices $v$ y $w$ es $ O (n^n)$, con
+$n = |V(G)|$. Esto es debido a que en la exploración, por cada nodo vecino $u$ de $v$, el algoritmo visita cada
+vecino de $u$ (no visitado en el momento) y repite el proceso de busqueda. En el peor de los casos, el grafo es completo,
+por lo cada por cada uno de los $n-1$ vecinos $u$ de $v$ el algoritmo visita los $n-2$ vecinos $x$ de $u$, y por cada uno
+de estos visita los $n-3$ vecinos de $x$ y asi sucesivamente.
+
+Como esta busqueda se realiza por cada par de vertices, la complejidad temporal final del algoritmo es 
+$O (n^2n^n) = O (n^(n+2)) = O (n^n)$.
+
+
 \subsection{Solución 1: Utilizando el algoritmo de Dijkstra}
 
 Se le realiza la siguiente modificación al algoritmo de Dijkstra : se le 
