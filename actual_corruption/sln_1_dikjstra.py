@@ -30,6 +30,7 @@ def dijkstra(graph, s):
                         nodes[i][2] = [current[0]]
                         nodes[i][1] = nodes[current[0]][1] + dist[current[0]][i]
                         lista.append(nodes[i])
+    return nodes
 
 
 def path_seeker(current, nodes, used_edges, left, right, sol):
@@ -55,3 +56,13 @@ def sln(graph):
             used_edges = [[False for i in range(len(dist[0]))] for i in range (len(dist[0]))]
             path_seeker(j,temp,used_edges, i, j, solution_matrix)
     return solution_matrix
+
+
+graph = [
+    [0, 1, INF, INF,INF],
+	[1, 0, 1, 1,INF],
+	[INF, 1, 0, INF,1],
+	[INF, 1, INF, 0,1],
+    [INF,INF,1,1,0]
+]
+print(sln(graph))

@@ -1,3 +1,9 @@
+from shared import FLOAT_INF as INF
+from shared.testing import test
+
+from .test_gen import TEST_GEN
+
+
 def floyd_warshall(graph):
     dist = list(map(lambda i: list(map(lambda j: j, i)), graph))
     V = len(dist[0])
@@ -32,3 +38,15 @@ def sln(graph):
                 edges_involved[i][j] = edges_involved[i][j] + incoming_edges_to_j[i][v]
                 
     return edges_involved
+
+
+graph = [
+    [0, 1, INF, INF,INF],
+	[1, 0, 1, 1,INF],
+	[INF, 1, 0, INF,1],
+	[INF, 1, INF, 0,1],
+    [INF,INF,1,1,0]
+]
+print(sln(graph))
+
+test(sln, TEST_GEN)
