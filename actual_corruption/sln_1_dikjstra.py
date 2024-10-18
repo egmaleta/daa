@@ -7,6 +7,7 @@ def get_min(nodes):
     for i,node in enumerate(nodes):
         if node[1] < minimum:
             index = i
+            minimum = node[1]
 
     return index
 
