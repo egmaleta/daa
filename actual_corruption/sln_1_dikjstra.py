@@ -1,4 +1,4 @@
-INF = float("inf")
+from shared import FLOAT_INF as INF
 
 
 def get_min(nodes):
