@@ -23,9 +23,9 @@ def dijkstra(graph, s):
         current = lista.pop(get_min(lista))
         for i in range(V):
             if i != current[0]:
+                # relax
                 if dist[current[0]][i] < INF and nodes[i][1] >= nodes[current[0]][1] + dist[current[0]][i]:
                     if nodes[i][1] == nodes[current[0]][1] + dist[current[0]][i]:
-                        nodes[i][1] = nodes[current[0]][1] + dist[current[0]][i]
                         nodes[i][2].append(current[0])
                     else:
                         nodes[i][2] = [current[0]]
